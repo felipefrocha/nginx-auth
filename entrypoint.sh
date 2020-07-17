@@ -20,7 +20,11 @@ fi
 
 echo "######## SETTING UP SERVER ########"
 
-htpasswd -bBc /etc/nginx/.htpasswd $BASIC_AUTH_USERNAME $BASIC_AUTH_PASSWORD
+user=$(cat $BASIC_AUTH_USERNAME)
+pass=$(cat $BASIC_AUTH_PASSWORD)
+
+echo "htpasswd -c /etc/nginx/.htpasswd $user $pass"
+htpasswd -b -c /etc/nginx/.htpasswd $user $pass
 
 sed \
     -e "s/##NAME_FRONT##/$NAME_FRONT/g" \
@@ -30,7 +34,7 @@ sed \
     -e "s/##PORT##/$PORT/g" \
     -e "s/##SUBDOMAIN##/$SUBDOMAIN/g" \
     -e "s/##DOMAIN##/$DOMAIN/g" \
-    -e "s/##BASIC_AUTH_USERNAME##/$BASIC_AUTH_USERNAME/g" \
+    -e "s/##BASIC_AUTH_USERNAME##/$user/g" \
     -e "s|##API_BASE_PATH##|$API_BASE_PATH|g" \
   nginx.conf.tmpl > /etc/nginx/nginx.conf
 
