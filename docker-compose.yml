@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   ng:
-    image: felipefrocha89/nginx-simple-auth
+    image: felipefrocha89/nginx-simple-auth:latest
     build:
       context: .
     env_file:
