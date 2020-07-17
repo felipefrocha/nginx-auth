@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  ng:
+    image: felipefrocha89/nginx-simple-auth
+    build:
+      context: .
+    env_file:
+      - .env       
+    ports:
+      - 81:80
+      - 4000:4000
+    secrets:
+      - auth
+      - pass
+
+secrets:
+  auth:
+    file: auth 
+  pass:
+    file: auth
