@@ -30,6 +30,7 @@ sed \
     -e "s/##PORT##/$PORT/g" \
     -e "s/##SUBDOMAIN##/$SUBDOMAIN/g" \
     -e "s/##DOMAIN##/$DOMAIN/g" \
+    -e "s/##BASIC_AUTH_USERNAME##/$BASIC_AUTH_USERNAME/g" \
     -e "s|##API_BASE_PATH##|$API_BASE_PATH|g" \
   nginx.conf.tmpl > /etc/nginx/nginx.conf
 
