@@ -20,6 +20,8 @@ fi
 
 echo "######## SETTING UP SERVER ########"
 
+htpasswd -bBc /etc/nginx/.htpasswd $BASIC_AUTH_USERNAME $BASIC_AUTH_PASSWORD
+
 sed \
     -e "s/##NAME_FRONT##/$NAME_FRONT/g" \
     -e "s/##NAME_BACK##/$NAME_BACK/g" \

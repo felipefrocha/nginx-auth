@@ -14,8 +14,7 @@ STOPSIGNAL SIGQUIT
 
 RUN apt update -y \
     && apt full-upgrade -y \
-    && apt install iputils-ping apache2-utils dnsutils -y \
-    && htpasswd -bBc /etc/nginx/.htpasswd ${BASIC_AUTH_USERNAME} ${BASIC_AUTH_PASSWORD} 
+    && apt install iputils-ping apache2-utils dnsutils -y
 
 COPY entrypoint.sh /
 COPY nginx.conf.tmpl /nginx.conf.tmpl
